@@ -7,7 +7,7 @@ import json
 import requests
 
 
-pacific = gettz('America/Los_Angeles')
+pacific = gettz('Asia/Shanghai')
 
 
 def publish(date, title, art, duration, uri):
@@ -72,7 +72,7 @@ for summary in summaries.get('items', []):
     for player in summary['devicePlayers']:
 
         # ignore everyone but myself
-        if player['nickname'] != 'Jonathan':
+        if player['nickname'] != 'TENQEI':
             continue
 
         # loop through each game I played on this date
@@ -110,7 +110,7 @@ for summary in summaries.get('items', []):
                 uri=uri
             )
 
-            success = publish(**data)
+            success = True  # publish(**data)
 
             # store a footprint if successful
             if success:
@@ -118,3 +118,5 @@ for summary in summaries.get('items', []):
                 print('Successfully published!')
             else:
                 print('Failed to publish...')
+
+print('Finished!')
